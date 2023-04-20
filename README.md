@@ -1,6 +1,8 @@
 # Šablona
 
-V `dphshv_2023_xxm.xml` doplň svoje údaje. `c_ufo="<dopln>" c_pracufo="<dople>"` - na tohle je asi nejjednodušší si vybrat úřad kterému hlásím v průvodci, a pak si formulář uložit a vykopírovat IDčka.
+`cp dphshv_2023.template.xml dphshv_2023.xml`
+
+Pak v `dphshv_2023.xml` doplň svoje údaje. `c_ufo="<dopln>" c_pracufo="<dople>"` - na tohle je asi nejjednodušší si vybrat úřad kterému hlásím v průvodci, a pak si formulář uložit a vykopírovat IDčka.
 
 # Formulář
 
