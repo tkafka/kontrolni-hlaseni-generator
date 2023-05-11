@@ -4,12 +4,8 @@
   "description": "",
   "main": "gen.js",
   "scripts": {
-    "start": "node gen.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node gen.js"
   },
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "mkdirp": "^3.0.0"
-  }
+  "license": "ISC"
 }

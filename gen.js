@@ -1,7 +1,6 @@
 const fs = require('fs').promises
 const readline = require('readline')
 const path = require('path')
-const { mkdirp } = require('mkdirp')
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
@@ -41,7 +40,7 @@ const main = async () => {
     .replace(/\$CZK_AMOUNT/g, czkAmount)
 
   const outputDir = path.join('..', `${year}-${month}`)
-  await mkdirp(outputDir)
+  await fs.mkdir(outputDir, { recursive: true });
 
   const outputFileName = `dphshv_${year}_${month}.xml`
   const outputPath = path.join(outputDir, outputFileName)
