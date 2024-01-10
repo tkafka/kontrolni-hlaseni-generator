@@ -39,7 +39,7 @@ const main = async () => {
     .replace(/\$YYYY/g, year)
     .replace(/\$CZK_AMOUNT/g, czkAmount)
 
-  const outputDir = path.join("..", `${year} ${month}`);
+  const outputDir = path.join("..", "DPH", `${year} ${month}`);
   await fs.mkdir(outputDir, { recursive: true });
 
   const outputFileName = `dphshv_${year}_${month}.xml`
