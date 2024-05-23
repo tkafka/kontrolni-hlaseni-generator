@@ -21,9 +21,13 @@ const askUser = (question, defaultValue, formatter) => {
   });
 };
 
-const formatTwoDigits = (value) => {
+function cleanNumericString(inputString) {
+  return inputString.replace(/[^0-9.,]+/g, "");
+}
+
+function formatTwoDigits(value) {
   return String(value).padStart(2, "0");
-};
+}
 
 const main = async () => {
   console.log(
@@ -32,7 +36,7 @@ const main = async () => {
   const day = await askUser("Enter day", "01", formatTwoDigits);
   const month = await askUser("Enter month", currentMonth, formatTwoDigits);
   const year = await askUser("Enter year", currentYear);
-  const czkAmount = await askUser("Enter CZK amount", "0");
+  const czkAmount = await cleanNumericString(askUser("Enter CZK amount", "0"));
   rl.close();
 
   const inputFileContent = await fs.readFile(inputTemplate, "utf-8");
