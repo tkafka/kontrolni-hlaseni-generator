@@ -9,8 +9,16 @@ const rl = readline.createInterface({
 const inputTemplate = "dphshv_2023.xml";
 
 const currentDate = new Date();
-const currentMonth = String(currentDate.getMonth() + 1).padStart(2, "0");
-const currentYear = currentDate.getFullYear();
+const previousMonthDate = new Date(
+  currentDate.getFullYear(),
+  currentDate.getMonth() - 1,
+  currentDate.getDate()
+);
+const previousDateMonth = String(previousMonthDate.getMonth() + 1).padStart(
+  2,
+  "0"
+);
+const previousDateYear = previousMonthDate.getFullYear();
 
 const askUser = (question, defaultValue, formatter) => {
   return new Promise((resolve) => {
@@ -34,9 +42,14 @@ const main = async () => {
     `Please enter the date of the reported month (usually last month).`
   );
   const day = await askUser("Enter day", "01", formatTwoDigits);
-  const month = await askUser("Enter month", currentMonth, formatTwoDigits);
-  const year = await askUser("Enter year", currentYear);
-  const czkAmount = await cleanNumericString(askUser("Enter CZK amount", "0"));
+  const month = await askUser(
+    "Enter month",
+    previousDateMonth,
+    formatTwoDigits
+  );
+  const year = await askUser("Enter year", previousDateYear);
+  const czkAmountStr = await askUser("Enter CZK amount", "0");
+  const czkAmount = cleanNumericString(czkAmountStr);
   rl.close();
 
   const inputFileContent = await fs.readFile(inputTemplate, "utf-8");
