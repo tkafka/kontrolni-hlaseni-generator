@@ -6,7 +6,8 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-const inputTemplate = "dphshv_2023.xml";
+const inputTemplateFilename = "dphshv_2023.xml";
+const inputTemplatePath = path.join(__dirname, inputTemplateFilename);
 
 const currentDate = new Date();
 const previousMonthDate = new Date(
@@ -52,14 +53,14 @@ const main = async () => {
   const czkAmount = cleanNumericString(czkAmountStr);
   rl.close();
 
-  const inputFileContent = await fs.readFile(inputTemplate, "utf-8");
+  const inputFileContent = await fs.readFile(inputTemplatePath, "utf-8");
   const outputFileContent = inputFileContent
     .replace(/\$DD/g, day)
     .replace(/\$MM/g, month)
     .replace(/\$YYYY/g, year)
     .replace(/\$CZK_AMOUNT/g, czkAmount);
 
-  const outputDir = path.join("..", "DPH", `${year} ${month}`);
+  const outputDir = path.join(__dirname, "..", "DPH", `${year} ${month}`);
   await fs.mkdir(outputDir, { recursive: true });
 
   const outputFileName = `dphshv_${year}_${month}.xml`;
