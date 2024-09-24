@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Pisemnost nazevSW="gpt-script">
+  <DPHSHV verzePis="01.02.09">
+    <VetaD dokument="SHV" k_uladis="DPH" shvies_forma="R" d_poddp="$DD.$MM.$YYYY" rok="$YYYY" mesic="$MM"/>
+    <VetaP c_ufo="<dopln>" c_pracufo="<dopln>" c_orient="" c_pop="<cislo popisne>" dic="<rodne cislo>" ulice="<ulice>" naz_obce="<obec>" psc="<psc>" stat="Česká republika" typ_ds="F" jmeno="<jmeno>" prijmeni="<jmeno>" titul="<titul>"/>
+    <VetaR c_vat="9700053D" k_pln_eu="3" k_stat="IE" pln_hodnota="$CZK_AMOUNT" pln_pocet="1"/>
+  </DPHSHV>
+</Pisemnost>

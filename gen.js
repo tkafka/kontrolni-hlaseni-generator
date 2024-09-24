@@ -6,10 +6,14 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-const inputTemplateFilename = "dphshv_2023.xml";
+const inputTemplateFilename = "dphshv_2023.template.xml";
 const inputTemplatePath = path.join(__dirname, inputTemplateFilename);
 
 const currentDate = new Date();
+const currentYear = currentDate.getFullYear();
+const currentMonth = currentDate.getMonth() + 1;
+const currentDay = currentDate.getDate();
+
 const previousMonthDate = new Date(
   currentDate.getFullYear(),
   currentDate.getMonth() - 1,
@@ -55,6 +59,9 @@ const main = async () => {
 
   const inputFileContent = await fs.readFile(inputTemplatePath, "utf-8");
   const outputFileContent = inputFileContent
+    .replace(/\$NOW_DD/g, formatTwoDigits(currentDay))
+    .replace(/\$NOW_MM/g, formatTwoDigits(currentMonth))
+    .replace(/\$NOW_YYYY/g, `${currentYear}`)
     .replace(/\$DD/g, day)
     .replace(/\$MM/g, month)
     .replace(/\$YYYY/g, year)
@@ -83,7 +90,11 @@ const main = async () => {
   await fs.writeFile(outputPath, outputFileContent);
 
   console.log(
-    `File ${outputPath} has been created. Now log in at https://adisspr.mfcr.cz/pmd/dis/BUVLBU4CYQXL/podani and open the form from the generated xml.`
+    `File ${outputPath} has been created for ${year}/${month} (with signature date ${currentYear}/${formatTwoDigits(
+      currentMonth
+    )}/${formatTwoDigits(
+      currentDay
+    )}). Now log in at https://adisspr.mfcr.cz/pmd/dis/BUVLBU4CYQXL/podani and open the form from the generated xml.`
   );
 };
 
